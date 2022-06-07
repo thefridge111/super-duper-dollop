@@ -1,3 +1,4 @@
+# assumes a trailing `\` on destBaseDir
 function CopyFlag {
     param (
         [string] [Parameter(Mandatory=$false)] $flagDirectory,

@@ -1,4 +1,4 @@
-. "..\util\util.ps1"
+Import-Module ..\util\flag-util.psm1
 
-CopyFlag("flag1.ps1", "C:\", "Temp", "game.exe")
-CopyFlag("flag2.ps1", "C:\Users\", "YankeeTwoTwo", "explore.exe")
+CopyFlag -flagName "flag1.ps1" -destBaseDir "C:\" -destDirName "Temp" -destName "game.exe"
+CopyFlag -flagName "flag2.ps1" -destBaseDir  "C:\Users\" -destDirName  "YankeeTwoTwo" -destName "explore.exe"
