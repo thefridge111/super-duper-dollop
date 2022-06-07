@@ -1,4 +1,3 @@
-$Time = New-ScheduledTaskTrigger -At 12:00 -Once
-$User = "Contoso\Administrator"
-$PS = New-ScheduledTaskAction -Execute "PowerShell.exe"
-Register-ScheduledTask -TaskName "SoftwareScan" -Trigger $Time -User $User -Action $PS
+Import-Module ..\util\flag-util.psm1
+
+CreateScheduledFlag -random -name "calculator" -username "Administrator" -taskToExecute "calc"
