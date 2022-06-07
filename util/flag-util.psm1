@@ -24,9 +24,9 @@ Function CopyFlag {
 
 Function CreateScheduledFlag {
     param (
-        [switch][Parameter(Mandatory=$false)] $random=$false,
-        [switch][Parameter(Mandatory=$false)] $atStart=$false,
-        [int][Parameter(Mandatory=$false)] $frequency,
+        [switch][Parameter(Mandatory=$false)] $random,
+        [switch][Parameter(Mandatory=$false)] $atStart,
+        [string][Parameter(Mandatory=$false)] $frequency,
         [string][Parameter(Mandatory=$false)] $atTime,
         [string][Parameter(Mandatory)] $name,
         [string][Parameter(Mandatory)] $userName,
