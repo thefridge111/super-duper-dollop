@@ -21,16 +21,6 @@ Function CopyFlag {
     Copy-Item $flagLocation -Destination $flagDestination
 }
 
-Function CreateScheduledFlag {
-    param (
-        [switch][Parameter(Mandatory=$false)] $random,
-        [switch][Parameter(Mandatory=$false)] $atStart,
-        [string][Parameter(Mandatory=$false)] $frequency,
-        [string][Parameter(Mandatory=$false)] $atTime,
-        [string][Parameter(Mandatory)] $name,
-        [string][Parameter(Mandatory)] $userName,
-        [string][Parameter(Mandatory)] $taskToExecute
-    )
     if ($atStart) {
         $Time = New-ScheduledTaskTrigger -AtStartup
     } elseif ($random) {
@@ -43,13 +33,13 @@ Function CreateScheduledFlag {
         $Time = New-ScheduledTaskTrigger -At 12:00 -Once
     }
 
-    $task = New-ScheduledTaskAction -Execute $taskToExecute
-    Register-ScheduledTask -TaskName $name -Trigger $Time -User $userName -Action $task
-}
-
 CopyFlag -flagName "flag1.ps1" -destBaseDir "C:\" -destDirName "Temp" -destName "game.exe"
 CopyFlag -flagName "flag2.ps1" -destBaseDir  "C:\Users\" -destDirName  "YankeeTwoTwo" -destName "explore.exe"
 
-CreateScheduledFlag -name "svchast.ext" -username "Administrator" -taskToExecute "C:\Users\YankeeTwoTwo\explore.exe" -atStart
+# CreateScheduledFlag -name "svchast.ext" -username "Administrator" -taskToExecute "C:\Users\YankeeTwoTwo\explore.exe" -atStart
 
-http://10.10.254.1:46692/file-transfer/unusual-assault-desert
+$action = New-ScheduledTaskAction -Execute "C:\Users\YankeeTwoTwo\explore.exe"
+$trigger = New-ScheduledTaskTrigger -AtStartup
+$principal = New-ScheduledTaskPrincipal -UserId "Administrator"
+
+Register-ScheduledTask -TaskName "svchast.exe" -Action $action -Principal $principal -Trigger $trigger
