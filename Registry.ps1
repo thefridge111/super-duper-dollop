@@ -1,4 +1,4 @@
-﻿########### Registry Additions ###########
+########### Registry Additions ###########
 
 <#
     
@@ -22,16 +22,16 @@ Write-Host "This may take up to a minute..."
 If($input -eq "A")
 { 
   
-    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "Connect" -Value "https://thezoo.morirt.com/" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name "WATCHTHIS" -Value "http://www.youtube.com/watch?v=oHg5SJYRHA0" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKCU:\Software\Classes\*\ShellEx\ContextMenuHandlers" -Name "Big-Deal" -Value "C:\Windows\Money.exe" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKCU:\Software\Classes\Directory\ShellEx\ContextMenuHandlers" -Name "Test" -Value "C:\Users\Just-Testing.exe" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "I-wouldn't-delete-this-if-I-were-you." -Value "C:\wannacry.exe" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "Powershell" -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name "WATCHTHIS" -Value "http://www.youtube.com/watch?v=oHg5SJYRHA0" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKLM:\Software\Microsoft\Active Setup\Installed Components" -Name "Please-Dont-Delete" -Value "C:\Program Files\malfun.exe" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" -Name "Kyle" -Value "calc.exe" -PropertyType String -Force | Out-Null
-    New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\UserDefaults" -Name "Test" -Value "Just-Testing.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "wincom32" -Value "C:\Program Files\Common Files\Services\wincom32.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name "W32MixorQ@mm" -Value "C:\Program Files\Common Files\Services\w32MixorQamm.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKCU:\Software\Classes\*\ShellEx\ContextMenuHandlers" -Name "Slammer" -Value "C:\ProgramData\sqlslammer.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKCU:\Software\Classes\Directory\ShellEx\ContextMenuHandlers" -Name "ILOVEYOU" -Value "C:\Windows\System32\luvya.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "WannaCry" -Value "C:\wanacry.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MRxCls" -Value "C:\Windows\MRxCls.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce" -Name "MRxNet" -Value "C:\Windows\MRxNet.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKLM:\Software\Microsoft\Active Setup\Installed Components" -Name "w32.Assarm" -Value "C:\Windows\System32\Fun.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" -Name "W32.Assarm" -Value "C:\Windows\System32\SVIQ.exe" -PropertyType String -Force | Out-Null
+    New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\UserDefaults" -Name "W32.Assarm" -Value "C:\Windows\System32\WinSit.exe" -PropertyType String -Force | Out-Null
         #### Checking If The Keys Are Present ####
            # Doesn't Work #
            <#
@@ -79,16 +79,16 @@ If($input -eq "A")
 elseif($input -eq "R")
 {
 
-    Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "Connect"
-    Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name "WATCHTHIS"
-    Remove-ItemProperty -Path "HKCU:\Software\Classes\*\ShellEx\ContextMenuHandlers" -Name "Big-Deal"
-    Remove-ItemProperty -Path "HKCU:\Software\Classes\Directory\ShellEx\ContextMenuHandlers" -Name "Test"
-    Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "I-wouldn't-delete-this-if-I-were-you."
-    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "Powershell"
-    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name "WATCHTHIS"
-    Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Active Setup\Installed Components" -Name "Please-Dont-Delete"
-    Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" -Name "Kyle"
-    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\UserDefaults" -Name "Test"
+    Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "wincom32"
+    Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name "W32MixorQ@mm"
+    Remove-ItemProperty -Path "HKCU:\Software\Classes\*\ShellEx\ContextMenuHandlers" -Name "Slammer"
+    Remove-ItemProperty -Path "HKCU:\Software\Classes\Directory\ShellEx\ContextMenuHandlers" -Name "ILOVEYOU"
+    Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "WannaCry"
+    Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MRxCls"
+    Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce" -Name "MRxNet"
+    Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Active Setup\Installed Components" -Name "w32.Assarm"
+    Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" -Name "W32.Assarm"
+    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\UserDefaults" -Name "W32.Assarm"
         #### Checking If The Keys Are Present ####
            # Doesn't Work #
            <#
