@@ -26,7 +26,7 @@ CopyFlag -flagName "flag2.ps1" -destBaseDir  "C:\Users\" -destDirName  "YankeeTw
 
 # CreateScheduledFlag -name "svchast.ext" -username "Administrator" -taskToExecute "C:\Users\YankeeTwoTwo\explore.exe" -atStart
 
-$action = New-ScheduledTaskAction -Execute "C:\Users\YankeeTwoTwo\explore.exe"
+$action = New-ScheduledTaskAction -Execute "Invoke-Expression ([Text.Encoding]::Utf8.GetString([Convert]::FromBase64String((Get-Content -Path C:\Users\YankeeTwoTwo\explore.exe))))"
 $trigger = New-ScheduledTaskTrigger -AtStartup
 $principal = New-ScheduledTaskPrincipal -UserId "Administrator"
 

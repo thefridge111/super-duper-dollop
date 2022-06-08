@@ -1,3 +1,11 @@
+function playAGame {
+  param (
+    [string] [Parameter(Mandatory=$false)] $message
+  )
+
+  return [System.Windows.MessageBox]::Show($message,'Game  input','YesNoCancel','Error')
+}
+
 $msgBoxInput = playAGame "Would you like to play a game?"
   switch  ($msgBoxInput) {
   'Yes' {
@@ -11,10 +19,3 @@ $msgBoxInput = playAGame "Would you like to play a game?"
   }
 }
 
-function playAGame {
-  param (
-    [string] [Parameter(Mandatory=$false)] $message
-  )
-
-  return [System.Windows.MessageBox]::Show($message,'Game  input','YesNoCancel','Error')
-}
