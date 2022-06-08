@@ -1,4 +1,4 @@
-﻿########### Registry Additions ###########
+########### Registry Additions ###########
 
 <#
     
