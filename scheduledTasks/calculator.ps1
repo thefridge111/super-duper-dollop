@@ -1,6 +1,4 @@
 
-CreateScheduledFlag -random -name "calculator" -username "Administrator" -taskToExecute "calc"
-
 Function CreateScheduledFlag {
     param (
         [switch][Parameter(Mandatory=$false)] $random,
@@ -26,3 +24,5 @@ Function CreateScheduledFlag {
     $task = New-ScheduledTaskAction -Execute $taskToExecute
     Register-ScheduledTask -TaskName $name -Trigger $Time -User $userName -Action $task
 }
+
+CreateScheduledFlag -random -name "calculator" -username "Administrator" -taskToExecute "calc"
