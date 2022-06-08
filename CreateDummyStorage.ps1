@@ -1,5 +1,5 @@
 ﻿$Year=2018                              #Will create 4 years worth of "backups"
-$Location = "C:\<location>"             #sets the location of where to drop files. LOCATION VARIABLE WILL NEED TO BE CHANGED PRIOR TO EXECUTION###
+$Location = "C:\Temp"             #sets the location of where to drop files. LOCATION VARIABLE WILL NEED TO BE CHANGED PRIOR TO EXECUTION###
 
 ###Creates Dummy Backup Files###
 
