@@ -16,3 +16,7 @@ Collection of scripts to plant flags on a windows system
 The entire repository will be needed on the specific host to run. This is as a result of the utility functions required by some of the scripts. 
 
 In all cases the scripts can be invoked the usual way via `.\<script_name>`. The exception to this are planting the file artifacts. In this case one needs to run the [file-artifacts.ps1](./files/file-artifacts.ps1) script to plant the desired files on the system: `.\files\file-artifacts.ps1`.
+
+To make sending these over Cobalt Strike beacons we recommend turning the entirety of the script files into a single line via `cat` and `awk` using pipes:
+- `cat <file_name> | awk '{print}' ORS='" '` -> This will output the string to STDOUT __Not recommended for long files__ 
+- `cat <file_name> | awk '{print}' ORS='" ' > command.txt` -> Does the same as described above but pipes output into a file called `command.txt` for easier GUI work. 
