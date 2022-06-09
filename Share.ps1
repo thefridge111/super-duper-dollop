@@ -1,15 +1,17 @@
 ﻿##### share.ps1 #####
 <#
 By: Cpl Cook, Remington
-This script allows for a user to make changes to a share.
-Share.ps1 should be used with cobaltstrike to allow an easy way to make changes to a share.
+This script allows for a user to make changes to a share easily via cli.
+In order to use this script you must have the following prerequisites.
+1) Be on the same network that the share is being hosted on.
+2) Know the network share location
+3) Have access to the share
 
 If the powershell execution policy is not set to bypass there are 2 options
 1) Using an administrator account run the command:
         Set-ExecutionPolicy bypass
+        When prompted press 'A' Then press enter.
 2) Run the commands that are in this script one line at a time instead of trying to run the script as a whole.
-
-
 
 
 #>
@@ -30,7 +32,7 @@ While($Bool -eq "True")
     Write-Host "B) Change Directory"
     Write-Host "C) Delete specific file"
     Write-Host "D) Collect specific file"
-    Write-Host "E) Delete all files with a specific extension"
+    Write-Host "E) Collect or Delete all files with a specific extension"
     Write-Host "F) Delete all files"
     Write-Host "G) Collect all files"
     Write-Host "H) Collect then delete all files"
@@ -53,7 +55,9 @@ While($Bool -eq "True")
             Write-Host "Example of how to change directory:"
             Write-Host ""
             Write-Host ""
-            $Share = Read-Host -Prompt "Type the full path to where you want to go to:"
+            Write-Host "Type the full path to where you want to go to: C:\Temp\2018"
+            pwd
+            $Share = Read-Host -Prompt "Type the full path to where you want to go to"
 
         }
     #### Deletes a specific file from the $share directory or recursively delete a directory ####
@@ -67,7 +71,7 @@ While($Bool -eq "True")
             if($choice -eq "A")
             {
                 Get-ChildItem $share
-                $delete = read-host -prompt "Directory to be deleted: "
+                $delete = read-host -prompt "Directory to be deleted"
                 rm -Recurse -Force $Share\$delete
                 clear
                 Get-ChildItem $Share
@@ -75,7 +79,7 @@ While($Bool -eq "True")
             elseif($choice -eq "B")
             {
                 Get-ChildItem $share
-                $delete = read-host -prompt "File to be deleted: "
+                $delete = read-host -prompt "File to be deleted"
                 rm -Force $Share\$delete
                 clear
                 Get-ChildItem $Share
@@ -89,36 +93,45 @@ While($Bool -eq "True")
     #### Collect specific File ####                
         elseif($Option -eq "D")
         {
-            $collection = test-path C:\Collection
-            if($collection -eq "false")
-            {
-                mkdir C:\Collection
+                mkdir C:\Collection -ErrorAction SilentlyContinue
                 $file = Read-Host -Prompt "filename:"
                 cp $Share\$file C:\Collection\$file
                 Test-Path C:\Collection\$file
-            }
-            elseif($collection -eq "true")
-            {
-               $file = Read-Host -Prompt "filename:"
-                cp $Share\$file C:\Collection\$file 
-                Test-Path C:\Collection\$file
-            }
-            else
-            {
-                Write-Host "Failed"
-            }
         }
-#### Deletes files with a specific extension ####
+#### Collects/Deletes files with a specific extension ####
         elseif($Option -eq "E")
         {
-                Get-ChildItem $share
-                Write-Host "do not put the dot in the extension"
-                Write-Host "Example:"
-                Write-Host "Extension: txt"
-                $delete = read-host -prompt "Extension: "
-                rm -Force $share\*.$delete
                 clear
-                Get-ChildItem $Share
+                Write-Host "A) Collect"
+                Write-Host "B) Delete"
+                $choice = Read-Host
+                if($choice -eq "A")
+                {
+                    Get-ChildItem $share
+                    Write-Host "do not put the dot in the extension"
+                    Write-Host "Example:"
+                    Write-Host "Extension: txt"
+                    $collect = read-host -prompt "Extension"
+                    mkdir C:\Collection -ErrorAction SilentlyContinue
+                    cp -Force $share\*.$collect C:\Collection\
+                    clear
+                    Get-ChildItem $Share
+                }
+                elseif($choice -eq "B")
+                {
+                    Get-ChildItem $share
+                    Write-Host "do not put the dot in the extension"
+                    Write-Host "Example:"
+                    Write-Host "Extension: txt"
+                    $delete = read-host -prompt "Extension"
+                    rm -Force $share\*.$delete
+                    clear
+                    Get-ChildItem $Share
+                }
+                else
+                {
+                    Write-Host "Invalid Input"
+                }
         }
 
     #### Delete All Files ####
@@ -155,19 +168,20 @@ While($Bool -eq "True")
     #### Delete Files Over Time  ####
         elseif($Option -eq "I")
         {
-            
-            Clear-Host
-            Write-Host "Delete Files Over Time"
-            $Sleep = Read-Host -prompt "How long would you like to set your interval for in seconds:"
+            Write-Host "WARNING: EXPERIMENTAL" -ForegroundColor Red
+            Write-Host "Press Enter To Continue"
+            Read-Host
+            $Sleep = Read-Host -prompt "How long would you like to set your interval for in seconds"
             $Path = Test-Path $Share
             While($Path -eq "True")
             {
-                Get-ChildItem $Share | ForEach-Object {Remove-Item -LiteralPath $_.Name}
+                #Get-ChildItem $Share | ForEach-Object {Remove-Item -LiteralPath $_.Name}
+                #$Path = Test-Path $Share
+                $files = Get-ChildItem -Path $Share -Recurse
+                $Sample = $files | Get-Random -Count 1 | Remove-Item -Force -Recurse
                 $Path = Test-Path $Share
                 Start-Sleep $Sleep
             }
-            Get-ChildItem "D:\New Folder" -Filter *.txt |
-            foreach-object -process {rename-item -path $_.FullName -newname ($_.Remove(0,3))}
         }
 
     #### Quit ####
