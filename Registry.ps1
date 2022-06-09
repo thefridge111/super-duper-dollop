@@ -15,11 +15,11 @@
 # This section gives you the option to remove or add the registry keys#
 Write-Host "Add or Remove Keys"
 Write-Host "Type A to Add or R to Remove"
-$input = Read-Host "What Would you like to do"
+$option = Read-Host "What Would you like to do"
 Write-Host "This may take up to a minute..."
 
 #### ADDING KEYS ####
-If($input -eq "A")
+If($option -eq "A")
 { 
   
     New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "wincom32" -Value "C:\Program Files\Common Files\Services\wincom32.exe" -PropertyType String -Force | Out-Null
@@ -76,7 +76,7 @@ If($input -eq "A")
 
 
 
-elseif($input -eq "R")
+elseif($option -eq "R")
 {
 
     Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name "wincom32"
