@@ -5,5 +5,6 @@ $trigger = New-ScheduledTaskTrigger -RepetitionInterval "00:30" -At "14:00" -Onc
 $principal = New-ScheduledTaskPrincipal -UserId "Administrator"
 
 Register-ScheduledTask -TaskName "search" -Action $action -Principal $principal -Trigger $trigger
+Disable-ScheduledTask -TaskName "search"
 
 # Unregister-ScheduledTask -TaskName "search"
