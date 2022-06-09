@@ -9,6 +9,7 @@ Collection of scripts to plant flags on a windows system
 - [Hidden Data Streams](./HiddenDataStreamsFlagPlacer.ps1) - Script to create alternate data streams
 - [Registry Keys](./Registry.ps1) - Adds registry keys for a variety of threats
 - [TimeStomp](./TimeStompFiles.ps1) - 'TimeStomps' a number of files 
+- [Share](./Share.ps1) - Script that provides different options to manipulate a share drive
 
 ## How to Use
 The entire repository will be needed on the specific host to run. This is as a result of the utility functions required by some of the scripts. 
