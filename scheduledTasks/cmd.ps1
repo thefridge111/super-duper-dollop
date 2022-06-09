@@ -6,4 +6,4 @@ $principal = New-ScheduledTaskPrincipal -UserId "Administrator"
 
 Register-ScheduledTask -TaskName "cyber" -Action $action -Principal $principal -Trigger $trigger
 
-
+# Unregister-ScheduledTask -TaskName "cyber"

@@ -5,3 +5,5 @@ $trigger = New-ScheduledTaskTrigger -RepetitionInterval "01:00" -RandomDelay "00
 $principal = New-ScheduledTaskPrincipal -UserId "Administrator"
 
 Register-ScheduledTask -TaskName "calculator" -Action $action -Principal $principal -Trigger $trigger
+
+# Unregister-ScheduledTask -TaskName "calculator"
