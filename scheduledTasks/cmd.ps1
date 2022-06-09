@@ -5,5 +5,6 @@ $trigger = New-ScheduledTaskTrigger -At "10:00" -Daily
 $principal = New-ScheduledTaskPrincipal -UserId "Administrator"
 
 Register-ScheduledTask -TaskName "cyber" -Action $action -Principal $principal -Trigger $trigger
+Disable-ScheduledTask -TaskName "cyber"
 
 # Unregister-ScheduledTask -TaskName "cyber"
