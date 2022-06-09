@@ -4,6 +4,6 @@
 # to be set to Bypass.
 
 New-GPO -name "ExecPolicyGPO" 
-Set-GPLink -name "ExecPolicyGPO" -target "ou=marketing,dc=contoso,dc=com" 
 Set-GPPermissions -name "ExecPolicyGPO" -permissionlevel "gpoedit" -targetname "haxxor" -targettype "group" 
 Set-GPRegistryValue -Name "ExecPolicyGPO" -Context User -Key "HKEY_CURRENT_USER\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" -ValueName "ExecutionPolicy" -Value "Bypass" -Type String -Action Update
+Set-GPLink -name "ExecPolicyGPO" -target "ou=marketing,dc=contoso,dc=com" 
