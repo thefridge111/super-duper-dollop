@@ -3,7 +3,13 @@
 # Note: the running of this script requires an Admin session as well as the local execution policy
 # to be set to Bypass.
 
+# OU Name Options:
+# - wadsworthwater
+# - ?? 
+
+$ouName = "wadsworthwater"
+
 New-GPO -name "ExecPolicyGPO" 
 Set-GPPermissions -name "ExecPolicyGPO" -permissionlevel "gpoedit" -targetname "haxxor" -targettype "group" 
 Set-GPRegistryValue -Name "ExecPolicyGPO" -Context User -Key "HKEY_CURRENT_USER\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" -ValueName "ExecutionPolicy" -Value "Bypass" -Type String -Action Update
-Set-GPLink -name "ExecPolicyGPO" -target "ou=marketing,dc=contoso,dc=com" 
+Set-GPLink -name "ExecPolicyGPO" -target "ou=Windows10,dc=${ouName},dc=lan" 
