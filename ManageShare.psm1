@@ -1,6 +1,6 @@
 ﻿function ManageShare {
 	$Share = '<path_to_share>';
-	$Sleep = 2;
+	$Sleep = 3600;
 	While($true -eq $true)
 	{
 		$files = Get-ChildItem -Path $Share -Recurse;
