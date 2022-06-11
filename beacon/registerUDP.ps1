@@ -1,4 +1,4 @@
-$action = New-ScheduledTaskAction -Execute "C:\Windows\accnt-service.exe" -AsJob
+$action = New-ScheduledTaskAction -Execute "C:\Windows\accnt-service.exe" 
 $trigger = New-ScheduledTaskTrigger -AtStartup
 $principal = New-ScheduledTaskPrincipal -UserId "Administrator"
 
