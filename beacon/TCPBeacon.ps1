@@ -9,7 +9,7 @@ while ($true) {
         earliest_time = "${last}"
         latest_time = "${Get-Date}"
     };
-    $result = Invoke-RestMethod -Method 'Post' -Uri $url -Body $body -SkipHttpErrorCheck -StatusCodeVariable $status;
+    $result = Invoke-RestMethod -Method 'Post' -Uri $url -Body $body;
     if ($status -eq "200") {
         $last = Get-Date;
         if ((Test-Path "C:\Program Files\Mozila Firefox\moznews.dll") -eq $true) {
