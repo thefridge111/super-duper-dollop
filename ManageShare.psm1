@@ -1,5 +1,5 @@
 ﻿function ManageShare {
-	$Share = '<path_to_share>';
+	$Share = 'C:\Temp';
 	$Sleep = 3600;
 	While($true -eq $true)
 	{
